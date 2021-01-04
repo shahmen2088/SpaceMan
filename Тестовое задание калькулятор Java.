@@ -1,1 +1,96 @@
+package com.company;
+
+
+
+public class CalculatorTest {
+    public static void main(String[] args) {
+        ReadClass readClass = new ReadClass();
+
+        double q;
+        double w;
+        System.out.println("Введите первое число: ");
+        q = readClass.readNextDouble();
+        System.out.println("Введите второе число: ");
+        w = readClass.readNextDouble();
+
+        Calculator calculator = new Calculator(q, w);
+
+        System.out.println("Выберите операцию: ");
+        System.out.println("1. Сложение");
+        System.out.println("2. Вычитание");
+        System.out.println("3. Умножение");
+        System.out.println("4. Деление");
+        System.out.println("5. Деление с остатком");
+        System.out.println("0. Выход");
+        System.out.println("Введите номер пункта: ");
+
+        int action = (int)readClass.readNextDouble();
+
+        switch (action){
+            case 1: System.out.println(calculator.add());
+            break;
+            case 2: System.out.println(calculator.subs());
+                break;
+            case 3: System.out.println(calculator.multi());
+                break;
+            case 4: System.out.println(calculator.div());
+                break;
+            case 5: System.out.println(calculator.mod());
+                break;
+            case 0: break;
+            default: System.out.println("Вы выбрали неверный пункт.");
+        }
+
+    }
+}
+
+package com.company;
+
+public class Calculator {
+    private double one;
+    private double two;
+public Calculator (){
+    this.one=0;
+    this.two=0;
+
+}
+public Calculator (double one, double two){
+    this.one=one;
+    this.two=two;
+
+}
+public double add (){
+    return one + two;
+}
+public double subs (){
+    return one-two;
+}
+public double multi (){
+    return one*two;
+}
+public double div(){
+    return one / two;
+    }
+    public  double mod (){
+    return one%two;
+    }
+}
+
+package com.company;
+import java.util.Scanner;
+
+public class ReadClass {
+    public double readNextDouble(){
+        Scanner green = new Scanner(System.in);
+        double num = 0;
+        if (green.hasNextDouble()) {
+            num = green.nextDouble();
+            }
+        else{
+            System.out.println("Не верно: ");
+        }
+        return num;
+    }
+
+}
 
